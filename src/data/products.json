@@ -1,68 +1,90 @@
 [
   {
     "id": "1",
-    "name": "Klasik Altın Kolye",
+    "name": "Engagement Ring 1",
     "popularityScore": 0.85,
-    "weight": 15.5,
+    "weight": 2.1,
     "images": {
-      "yellow": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&auto=format&fit=crop",
-      "rose": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&auto=format&fit=crop",
-      "white": "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&auto=format&fit=crop"
+      "yellow": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG085-100P-Y.jpg?v=1696588368",
+      "rose": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG085-100P-R.jpg?v=1696588406",
+      "white": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG085-100P-W.jpg?v=1696588402"
     }
   },
   {
     "id": "2",
-    "name": "Zarif Altın Bilezik",
-    "popularityScore": 0.92,
-    "weight": 12.3,
+    "name": "Engagement Ring 2",
+    "popularityScore": 0.51,
+    "weight": 3.4,
     "images": {
-      "yellow": "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&auto=format&fit=crop",
-      "rose": "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&auto=format&fit=crop",
-      "white": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&auto=format&fit=crop"
+      "yellow": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG012-Y.jpg?v=1707727068",
+      "rose": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG012-R.jpg?v=1707727068",
+      "white": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG012-W.jpg?v=1707727068"
     }
   },
   {
     "id": "3",
-    "name": "Lüks Altın Yüzük",
-    "popularityScore": 0.78,
-    "weight": 8.7,
+    "name": "Engagement Ring 3",
+    "popularityScore": 0.92,
+    "weight": 3.8,
     "images": {
-      "yellow": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&auto=format&fit=crop",
-      "rose": "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=800&auto=format&fit=crop",
-      "white": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&auto=format&fit=crop"
+      "yellow": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG020-100P-Y.jpg?v=1683534032",
+      "rose": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG020-100P-R.jpg?v=1683534032",
+      "white": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG020-100P-W.jpg?v=1683534032"
     }
   },
   {
     "id": "4",
-    "name": "Minimal Altın Küpe",
-    "popularityScore": 0.95,
-    "weight": 5.2,
+    "name": "Engagement Ring 4",
+    "popularityScore": 0.88,
+    "weight": 4.5,
     "images": {
-      "yellow": "https://images.unsplash.com/photo-1535556116002-6281ff3e9f36?w=800&auto=format&fit=crop",
-      "rose": "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=800&auto=format&fit=crop",
-      "white": "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=800&auto=format&fit=crop"
+      "yellow": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG022-100P-Y.jpg?v=1683532153",
+      "rose": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG022-100P-R.jpg?v=1683532153",
+      "white": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG022-100P-W.jpg?v=1683532153"
     }
   },
   {
     "id": "5",
-    "name": "Vintage Altın Broş",
-    "popularityScore": 0.65,
-    "weight": 18.9,
+    "name": "Engagement Ring 5",
+    "popularityScore": 0.80,
+    "weight": 2.5,
     "images": {
-      "yellow": "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=800&auto=format&fit=crop",
-      "rose": "https://images.unsplash.com/photo-1588444650700-e6c7229c3f3c?w=800&auto=format&fit=crop",
-      "white": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&auto=format&fit=crop"
+      "yellow": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG074-100P-Y.jpg?v=1696232035",
+      "rose": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG074-100P-R.jpg?v=1696927124",
+      "white": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG074-100P-W.jpg?v=1696927124"
     }
   },
   {
     "id": "6",
-    "name": "Modern Altın Set",
-    "popularityScore": 0.88,
-    "weight": 25.4,
+    "name": "Engagement Ring 6",
+    "popularityScore": 0.82,
+    "weight": 1.8,
     "images": {
-      "yellow": "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=800&auto=format&fit=crop",
-      "rose": "https://images.unsplash.com/photo-1611652022419-a9419f74343a?w=800&auto=format&fit=crop",
-      "white": "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&auto=format&fit=crop"
+      "yellow": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG075-100P-Y.jpg?v=1696591786",
+      "rose": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG075-100P-R.jpg?v=1696591802",
+      "white": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG075-100P-W.jpg?v=1696591798"
+    }
+  },
+  {
+    "id": "7",
+    "name": "Engagement Ring 7",
+    "popularityScore": 0.70,
+    "weight": 5.2,
+    "images": {
+      "yellow": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG094-100P-Y.jpg?v=1696589183",
+      "rose": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG094-100P-R.jpg?v=1696589214",
+      "white": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG094-100P-W.jpg?v=1696589210"
+    }
+  },
+  {
+    "id": "8",
+    "name": "Engagement Ring 8",
+    "popularityScore": 0.90,
+    "weight": 3.7,
+    "images": {
+      "yellow": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG115-100P-Y.jpg?v=1696596076",
+      "rose": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG115-100P-R.jpg?v=1696596151",
+      "white": "https://cdn.shopify.com/s/files/1/0484/1429/4167/files/EG115-100P-W.jpg?v=1696596147"
     }
   }
 ]
