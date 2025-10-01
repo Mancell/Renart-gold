@@ -30,9 +30,9 @@ const colorLabels: Record<ColorType, string> = {
 };
 
 const colorClasses: Record<ColorType, string> = {
-  yellow: 'bg-primary hover:bg-primary/80',
-  rose: 'bg-rose-gold hover:bg-rose-gold/80',
-  white: 'bg-white-gold hover:bg-white-gold/80'
+  yellow: '!bg-primary hover:!bg-primary/80',
+  rose: '!bg-rose-gold hover:!bg-rose-gold/80 !text-white',
+  white: '!bg-white-gold hover:!bg-white-gold/80 !text-foreground'
 };
 
 export const ProductCard = ({ product }: ProductCardProps) => {
@@ -71,11 +71,11 @@ export const ProductCard = ({ product }: ProductCardProps) => {
               <Button
                 key={color}
                 size="sm"
-                variant={selectedColor === color ? 'default' : 'outline'}
+                variant={selectedColor === color ? 'default' : 'ghost'}
                 className={`flex-1 transition-all ${
                   selectedColor === color 
-                    ? colorClasses[color] 
-                    : 'hover:bg-secondary'
+                    ? `${colorClasses[color]} text-white border-0` 
+                    : 'hover:bg-secondary/50 border border-border'
                 }`}
                 onClick={() => setSelectedColor(color)}
               >
