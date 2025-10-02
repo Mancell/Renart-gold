@@ -93,6 +93,11 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 42 30% 95%;
     --sidebar-border: 30 15% 22%;
     --sidebar-ring: 45 100% 51%;
+
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(var(--gold-light)) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--muted) / 0.3) 100%);
   }
 }
 

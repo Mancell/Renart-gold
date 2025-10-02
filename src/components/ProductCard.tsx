@@ -39,43 +39,57 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   const [selectedColor, setSelectedColor] = useState<ColorType>('yellow');
 
   return (
-    <Card className="overflow-hidden group hover:shadow-xl transition-all duration-300">
-      <div className="aspect-square relative overflow-hidden bg-muted">
+    <Card className="overflow-hidden group hover:shadow-2xl hover:shadow-gold/10 transition-all duration-500 hover:-translate-y-1 border-border/50 hover:border-gold/30 bg-gradient-to-br from-card to-card/50">
+      <div className="aspect-square relative overflow-hidden bg-gradient-to-br from-muted/50 to-muted">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         <img
           src={product.images[selectedColor]}
           alt={product.name}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
-        <Badge className="absolute top-4 right-4 bg-accent text-accent-foreground">
-          {product.popularityRating.toFixed(1)} ★
+        <Badge className="absolute top-4 right-4 bg-gold/90 backdrop-blur-sm text-white border-0 shadow-lg">
+          <span className="mr-1">⭐</span>
+          {product.popularityRating.toFixed(1)}
         </Badge>
       </div>
       
-      <div className="p-6 space-y-4">
+      <div className="p-6 space-y-5">
         <div>
-          <h3 className="text-xl font-semibold text-foreground mb-2">{product.name}</h3>
-          <p className="text-sm text-muted-foreground">{product.weight}g</p>
+          <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-gold transition-colors">
+            {product.name}
+          </h3>
+          <div className="flex items-center gap-2">
+            <Badge variant="outline" className="text-xs border-gold/30 text-muted-foreground">
+              {product.weight}g
+            </Badge>
+          </div>
         </div>
 
-        <div className="flex items-center justify-between">
-          <span className="text-2xl font-bold text-primary">
-            ${product.price.toFixed(2)}
-          </span>
-          <span className="text-sm text-muted-foreground">USD</span>
+        <div className="flex items-baseline justify-between p-4 bg-gradient-to-br from-gold/5 to-transparent rounded-lg border border-gold/10">
+          <div>
+            <p className="text-xs text-muted-foreground mb-1">Fiyat</p>
+            <span className="text-2xl font-bold bg-gradient-to-r from-gold to-gold-light bg-clip-text text-transparent">
+              ${product.price.toFixed(2)}
+            </span>
+          </div>
+          <span className="text-sm font-medium text-muted-foreground">USD</span>
         </div>
 
-        <div className="space-y-2">
-          <p className="text-sm font-medium text-foreground">Renk Seçimi</p>
+        <div className="space-y-3">
+          <p className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <span className="w-1 h-4 bg-gradient-to-b from-gold to-gold-light rounded-full" />
+            Renk Seçenekleri
+          </p>
           <div className="flex gap-2">
             {(Object.keys(product.images) as ColorType[]).map((color) => (
               <Button
                 key={color}
                 size="sm"
                 variant={selectedColor === color ? 'default' : 'ghost'}
-                className={`flex-1 transition-all ${
+                className={`flex-1 transition-all duration-300 font-medium ${
                   selectedColor === color 
-                    ? `${colorClasses[color]} text-white border-0` 
-                    : 'hover:bg-secondary/50 border border-border'
+                    ? `${colorClasses[color]} text-white border-0 shadow-lg scale-105` 
+                    : 'hover:bg-secondary/50 border border-border/50 hover:border-gold/30 hover:scale-102'
                 }`}
                 onClick={() => setSelectedColor(color)}
               >
