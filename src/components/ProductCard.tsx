@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Star } from 'lucide-react';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 
 type ColorType = 'yellow' | 'rose' | 'white';
 
@@ -37,6 +39,8 @@ const colorClasses: Record<ColorType, string> = {
 
 export const ProductCard = ({ product }: ProductCardProps) => {
   const [selectedColor, setSelectedColor] = useState<ColorType>('yellow');
+  const ratingAngle = Math.round((product.popularityRating / 5) * 360);
+  const ratingPercent = Math.round((product.popularityRating / 5) * 100);
 
   return (
     <Card className="overflow-hidden group hover:shadow-2xl hover:shadow-gold/10 transition-all duration-500 hover:-translate-y-1 border-border/50 hover:border-gold/30 bg-gradient-to-br from-card to-card/50">
@@ -47,10 +51,31 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           alt={product.name}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
-        <Badge className="absolute top-4 right-4 bg-gold/90 backdrop-blur-sm text-white border-0 shadow-lg">
-          <span className="mr-1">⭐</span>
-          {product.popularityRating.toFixed(1)}
-        </Badge>
+        <div className="absolute top-4 right-4">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <div className="relative group">
+                <div
+                  className="relative w-14 h-14 rounded-full p-[2px] shadow-lg transition-transform group-hover:scale-105"
+                  style={{ background: `conic-gradient(#D4AF37 ${ratingAngle}deg, rgba(255,255,255,0.15) 0deg)` }}
+                  aria-label={`Popülerlik ${product.popularityRating.toFixed(1)} / 5`}
+                >
+                  <div className="absolute inset-[2px] rounded-full bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center">
+                    <Star className="w-4 h-4 text-gold mb-0.5" />
+                    <span className="text-xs font-semibold text-white leading-none">
+                      {product.popularityRating.toFixed(1)}
+                    </span>
+                    <span className="text-[9px] text-white/70 leading-none mt-0.5">{ratingPercent}%</span>
+                  </div>
+                </div>
+                <div className="absolute -inset-1 rounded-full bg-gold/20 blur-md opacity-0 group-hover:opacity-70 transition-opacity" aria-hidden />
+              </div>
+            </TooltipTrigger>
+            <TooltipContent className="bg-black text-white border-gold/30">
+              Popülerlik: {product.popularityRating.toFixed(1)} / 5
+            </TooltipContent>
+          </Tooltip>
+        </div>
       </div>
       
       <div className="p-6 space-y-5">

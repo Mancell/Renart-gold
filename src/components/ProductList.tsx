@@ -1,8 +1,12 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { ProductCard } from './ProductCard';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { SlidersHorizontal, RotateCcw, DollarSign, Star } from 'lucide-react';
 import {
   Carousel,
   CarouselContent,
@@ -35,6 +39,19 @@ export const ProductList = ({ products, loading }: ProductListProps) => {
   const [priceRange, setPriceRange] = useState<[number, number]>([0, maxPrice]);
   const [popularityRange, setPopularityRange] = useState<[number, number]>([0, 5]);
 
+  const handlePriceChange = useCallback((value: number[] | [number, number]) => {
+    setPriceRange(value as [number, number]);
+  }, []);
+
+  const handlePopularityChange = useCallback((value: number[] | [number, number]) => {
+    setPopularityRange(value as [number, number]);
+  }, []);
+
+  const handleResetFilters = useCallback(() => {
+    setPriceRange([0, maxPrice]);
+    setPopularityRange([0, 5]);
+  }, [maxPrice]);
+
   const filteredProducts = useMemo(() => {
     return products.filter(product => 
       product.price >= priceRange[0] && 
@@ -60,41 +77,70 @@ export const ProductList = ({ products, loading }: ProductListProps) => {
     <div className="space-y-8">
       {/* Filters */}
       <div className="bg-card p-6 rounded-xl shadow-sm space-y-6">
-        <h2 className="text-2xl font-bold text-foreground">Filtreler</h2>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <SlidersHorizontal className="w-5 h-5 text-gold" />
+            <h2 className="text-2xl font-bold text-foreground">Filtreler</h2>
+          </div>
+          <Button variant="outline" size="sm" onClick={handleResetFilters} className="border-gold/30 hover:bg-gold/10">
+            <RotateCcw className="w-4 h-4 mr-2" />
+            Sıfırla
+          </Button>
+        </div>
+
+        <Separator className="bg-border/50" />
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="space-y-4">
-            <Label className="text-base">
-              Fiyat Aralığı: ${priceRange[0].toFixed(0)} - ${priceRange[1].toFixed(0)}
-            </Label>
+          <div className="space-y-3 p-4 rounded-lg border border-border/50 bg-background/50">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <DollarSign className="w-4 h-4 text-gold" />
+                <Label className="text-base">Fiyat Aralığı</Label>
+              </div>
+              <div className="flex items-center gap-2">
+                <Badge variant="outline" className="border-gold/30">${priceRange[0].toFixed(0)}</Badge>
+                <span className="text-muted-foreground">-</span>
+                <Badge variant="outline" className="border-gold/30">${priceRange[1].toFixed(0)}</Badge>
+              </div>
+            </div>
             <Slider
               min={0}
               max={maxPrice}
               step={10}
               value={priceRange}
-              onValueChange={(value) => setPriceRange(value as [number, number])}
+              onValueChange={handlePriceChange}
               className="w-full"
+              aria-label="Fiyat aralığı"
             />
           </div>
 
-          <div className="space-y-4">
-            <Label className="text-base">
-              Popülerlik: {popularityRange[0].toFixed(1)} - {popularityRange[1].toFixed(1)} ★
-            </Label>
+          <div className="space-y-3 p-4 rounded-lg border border-border/50 bg-background/50">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Star className="w-4 h-4 text-gold" />
+                <Label className="text-base">Popülerlik</Label>
+              </div>
+              <div className="flex items-center gap-2">
+                <Badge variant="outline" className="border-gold/30">{popularityRange[0].toFixed(1)} ★</Badge>
+                <span className="text-muted-foreground">-</span>
+                <Badge variant="outline" className="border-gold/30">{popularityRange[1].toFixed(1)} ★</Badge>
+              </div>
+            </div>
             <Slider
               min={0}
               max={5}
               step={0.1}
               value={popularityRange}
-              onValueChange={(value) => setPopularityRange(value as [number, number])}
+              onValueChange={handlePopularityChange}
               className="w-full"
+              aria-label="Popülerlik aralığı"
             />
           </div>
         </div>
 
-        <p className="text-sm text-muted-foreground">
-          {filteredProducts.length} ürün bulundu
-        </p>
+        <div className="flex items-center justify-between text-sm text-muted-foreground">
+          <span>{filteredProducts.length} ürün bulundu</span>
+        </div>
       </div>
 
       {/* Carousel for mobile/tablet */}
