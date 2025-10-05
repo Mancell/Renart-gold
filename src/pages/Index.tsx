@@ -24,7 +24,11 @@ const Index = () => {
   const { data, isLoading: isLoadingProducts, isError } = useQuery<{ products: ApiProduct[] }>({
     queryKey: ['products'],
     queryFn: async () => {
-      const res = await fetch('/api/products');
+      const base = (import.meta as any).env?.VITE_API_BASE_URL as string | undefined;
+      const endpoint = base && base.length
+        ? `${base.replace(/\/$/, '')}/api/products`
+        : '/api/products';
+      const res = await fetch(endpoint, { mode: 'cors' });
       if (!res.ok) throw new Error('Failed to fetch products');
       return res.json();
     },
