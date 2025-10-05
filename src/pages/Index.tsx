@@ -24,10 +24,7 @@ const Index = () => {
   const { data, isLoading: isLoadingProducts, isError } = useQuery<{ products: ApiProduct[] }>({
     queryKey: ['products'],
     queryFn: async () => {
-      const base = (import.meta as any).env?.VITE_API_BASE_URL as string | undefined;
-      const endpoint = base && base.length
-        ? `${base.replace(/\/$/, '')}/api/products`
-        : '/api/products';
+      const endpoint = 'https://renart-backend-api-production.up.railway.app/api/products';
       const res = await fetch(endpoint, { mode: 'cors' });
       if (!res.ok) throw new Error('Failed to fetch products');
       return res.json();
