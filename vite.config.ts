@@ -9,7 +9,7 @@ export default defineConfig(() => ({
     port: 8080,
     proxy: {
       "/api": {
-        target: "https://renart-backend-api-production.up.railway.app",
+        target: 'http://localhost:8082', // local Spring
         changeOrigin: true,
       },
     },

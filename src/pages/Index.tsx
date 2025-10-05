@@ -24,8 +24,7 @@ const Index = () => {
   const { data, isLoading: isLoadingProducts, isError } = useQuery<{ products: ApiProduct[] }>({
     queryKey: ['products'],
     queryFn: async () => {
-      const endpoint = 'https://renart-backend-api-production.up.railway.app/api/products';
-      const res = await fetch(endpoint, { mode: 'cors' });
+      const res = await fetch('/api/products');
       if (!res.ok) throw new Error('Failed to fetch products');
       return res.json();
     },

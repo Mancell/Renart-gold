@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import { ProductCard } from './ProductCard';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
@@ -35,9 +35,21 @@ interface ProductListProps {
 }
 
 export const ProductList = ({ products, loading }: ProductListProps) => {
-  const maxPrice = useMemo(() => Math.max(...products.map(p => p.price), 0), [products]);
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, maxPrice]);
+  const prices = useMemo(() => products.map(p => p.price), [products]);
+  const minPrice = useMemo(() => (prices.length ? Math.min(...prices) : 0), [prices]);
+  const maxPrice = useMemo(() => (prices.length ? Math.max(...prices) : 0), [prices]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([minPrice, maxPrice]);
   const [popularityRange, setPopularityRange] = useState<[number, number]>([0, 5]);
+
+  // Keep slider state in sync when products (and their min/max) change
+  useEffect(() => {
+    setPriceRange(prev => {
+      const clampedMin = Math.min(Math.max(prev[0], minPrice), maxPrice);
+      const clampedMax = Math.max(Math.min(prev[1], maxPrice), minPrice);
+      if (clampedMin !== prev[0] || clampedMax !== prev[1]) return [clampedMin, clampedMax];
+      return prev;
+    });
+  }, [minPrice, maxPrice]);
 
   const handlePriceChange = useCallback((value: number[] | [number, number]) => {
     setPriceRange(value as [number, number]);
@@ -48,9 +60,11 @@ export const ProductList = ({ products, loading }: ProductListProps) => {
   }, []);
 
   const handleResetFilters = useCallback(() => {
-    setPriceRange([0, maxPrice]);
+    setPriceRange([minPrice, maxPrice]);
     setPopularityRange([0, 5]);
-  }, [maxPrice]);
+  }, [minPrice, maxPrice]);
+
+  // manual inputs removed per request
 
   const filteredProducts = useMemo(() => {
     return products.filter(product => 
@@ -103,10 +117,11 @@ export const ProductList = ({ products, loading }: ProductListProps) => {
                 <Badge variant="outline" className="border-gold/30">${priceRange[1].toFixed(0)}</Badge>
               </div>
             </div>
+            {/* manual inputs removed */}
             <Slider
-              min={0}
+              min={minPrice}
               max={maxPrice}
-              step={10}
+              step={1}
               value={priceRange}
               onValueChange={handlePriceChange}
               className="w-full"
