@@ -9,7 +9,7 @@ export default defineConfig(() => ({
     port: 8080,
     proxy: {
       "/api": {
-        target: "https://renart-backend-api.vercel.app",
+        target: "https://renart-backend-api-production.up.railway.app",
         changeOrigin: true,
       },
     },
