@@ -9,7 +9,7 @@ export default defineConfig(() => ({
     port: 8080,
     proxy: {
       "/api": {
-        target: "http://localhost:8082",
+        target: "https://renart-backend-api.vercel.app",
         changeOrigin: true,
       },
     },
